@@ -15,7 +15,7 @@ const svg = d3.select('#map')
 
 const url = "https://cdn.glitch.com/9df3cdd3-6a84-457e-8a74-ed2fb96f9017%2Fcustom.geo.json?1504520743459";
 
-d3.json(url, function(error, geojson) {
+d3.json(url, (error, geojson) => {
   const projection = d3.geoOrthographic()
     .fitSize([width, height], geojson);
   
@@ -28,8 +28,8 @@ d3.json(url, function(error, geojson) {
   
   let rotation = 0;
   
-  setInterval(function() {
-    rotation--;
+  setInterval(() => {
+    rotation++;
     projection.rotate([rotation, 0, 0]);
     geoPath.attr('d', path(geojson));
   }, 100)
